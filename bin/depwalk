@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+var depwalk = require('../');
+depwalk.inject(function (log, cwd, managers) {
+  var _log = log('Walk');
+  _log.debug('Walking through', cwd);
+  managers.readIndexes(function (err, indexes) {
+    if (err) return _log.error(err);
+    managers.list();
+  });
+});
